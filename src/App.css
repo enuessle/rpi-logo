@@ -1,0 +1,282 @@
+/* Root and body */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  height: 100%;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* App container: flex layout for sidebar + main content */
+.app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Left fixed sidebar */
+.sidebar {
+  width: 280px;
+  background-color: #000000;
+  color: #ffffff;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 30px;
+  padding-top: 20px;
+  box-sizing: border-box;
+}
+
+/* Main content */
+.main-content {
+  margin-left: 280px; /* same as sidebar width */
+  flex: 1;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 20px;
+  overflow-y: auto;
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+}
+
+/* Logo */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* Top bar for vertical layout */
+.topbar {
+  width: 100%;
+  height: 80px;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  display: none; /* hidden by default, shown in portrait mode */
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+}
+
+/* Ensure the link looks like normal text */
+.topbar-link {
+  text-decoration: underline;
+  margin-top:5px;
+  color: inherit;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+/* Show topbar only when vertical */
+@media (max-aspect-ratio: 1/1) {
+  .topbar {
+    display: flex;
+  }
+}
+
+/* When vertical (vh > vw) */
+@media (max-aspect-ratio: 1/1) {
+  .sidebar{
+    display: none;
+  }
+  .main-content {
+    margin-top: 80px;
+    margin-left: 0;         /* full width */
+    width: 100vw;           /* ensure full screen width */
+    height: 100vh;          /* full screen height */
+    padding: 20px;          /* optional: smaller padding */
+    box-sizing: border-box;
+    align-items: center;    /* center everything */
+    overflow-y: auto;  /* scroll if content exceeds */
+  }
+
+  .preview-image {
+    max-width: 80%;         /* scale image to fit screen */
+    height: auto;
+  }
+
+  .button-container {
+    flex-wrap: wrap;        /* buttons wrap if needed */
+    justify-content: center;
+  }
+
+  .main-text {
+    max-width: 80%;         /* constrain text width */
+    text-align: justify;    /* nice justified formatting */
+  }
+
+}
+
+/* Cards */
+.card {
+  padding: 2em;
+}
+
+/* Buttons */
+.button-container {
+  display: flex;
+  gap: 12px;
+  justify-content: left;
+  margin-bottom:5px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.generate-btn, .download-btn {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.generate-btn:hover, .download-btn:hover {
+  background-color: #ff0000;
+}
+
+/* Preview image */
+.preview-image {
+  margin-top: 25px;
+  margin-bottom: 16px;
+  max-width: 100%;
+  height: auto;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center; /* horizontal centering */
+  align-items: center;     /* vertical centering if needed */
+  width: 100%;
+  overflow: hidden;
+}
+
+.image-container img {
+  max-width: 100%;   /* scale down if too wide */
+  height: auto;      /* keep aspect ratio */
+  object-fit: contain;
+}
+
+
+/* Hide canvas */
+.hidden-canvas {
+  display: none;
+}
+
+/* Headings */
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+
+/* Headings */
+.sidebar h1 {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  text-decoration: underline; /* adds underline */
+}
+
+.sidebar h2 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.no-link-style {
+  text-decoration: none; /* remove default link underline */
+  color: inherit;        /* keep h1 color */
+}
+
+.no-link-style h1 {
+  cursor: pointer;       /* show pointer on hover */
+}
+
+/* Prevent any hover color change */
+.no-link-style:hover{
+  color: inherit;
+}
+
+.main-text {
+  text-align: left;      /* aligns text to the left */
+  max-width: 750px;      /* limit how far right text can go */
+  line-height: 1.25;      /* optional: better readability */
+  margin: 0;             /* reset margins if needed */
+}
+
+.main-text h1{
+  font-size: 50px;
+  font-weight: bolder;
+  margin-bottom: 50px;
+}
+
+.main-text h2{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+
+.footer {
+  width: 100%;
+  margin-top: 40px; /* spacing from content above */
+  margin-bottom: 40px;
+}
+
+.footer-bar {
+  height: 2px;
+  background-color: #ccc; /* grey bar */
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.footer-texts {
+  display: flex;
+  justify-content: space-between; /* left and "middle" spacing */
+  width: 100%;
+  font-size: 14px;
+  color: #666;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.left-text {
+  text-align: left;
+  font-weight: bold;
+}
+
+.middle-text {
+  text-align: left;
+  font-weight: bold;
+  margin-left: 50%; /* roughly halfway across */
+}
